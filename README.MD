@@ -103,6 +103,15 @@ Columnas que muestran valores relacionados con tendencias de comprar e interacci
 12. **Columns Accepted**
 Diferentes columnas en función de la campaña. Valores 0 y 1 según si el cliente aceptó l aoferta o no de dicha campaña.
 
+13. **Column Complain**
+Valores 0 y 1 según si el cliente se ha quejado o no en los últimos dos años.
+
+14. **Columns Z_CostContact y Z_Revenue**
+Contienen valores constantes, por lo que es probable que estén representando una asignación estándar que se aplica a todos los registros de clientes.
+
+15. **Column Response**
+Con valores 0 y 1 entendido como si el cliente responde de manera positiv o no a las campañas de marketing.
+
 ### Actividad 3: Transformación de datos
 - Renombra las columnas y organízalas de la mejor manera posible. Proporciona la razón por la que realizaste los cambios en estas columnas para el análisis de datos.
 - Analiza y modifica los tipos de datos de las columnas.

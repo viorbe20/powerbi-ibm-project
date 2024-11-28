@@ -30,32 +30,53 @@ Link de la fuente de datos: [Datos](https://www.kaggle.com/datasets/rodsaldanha/
 ### Actividad 1: carga de datos
 
 - 1.1. Conecta los datos csv con power BI.
+- 1.2. Revisa los datos en el transformador de datos de Power Query y analiza el contenido de las columnas.
+- 1.3.  Analiza y modifica los tipos de datos de las columnas
 
 ![CSV connection](./img/1.1.png)
 
-- 1.2. Revisa los datos en el transformador de datos de Power Query y analiza el contenido de las columnas.
 
 ![Data transformation](./img/1.2.png)
 
 Análisis por columnas:
 
-1. **Columna ID**
+1. **Column ID**
 - Tipo de dato: Numérico (Entero).
 - Representa: Identificador único para cada cliente.
 - Comentarios: No hay duplicados.
 
-2. **Columna Year_Birth**
+2. **Column Year_Birth**
 - Tipo de dato: Numérico (Año).
 - Representa: Año de nacimiento del cliente.
 - Comentarios: Podrías calcular la edad como una nueva columna para facilitar análisis demográficos. Ejemplo: 2024 - Year_Birth. Si hay valores extremos (por ejemplo, años irreales como 1900), se deben limpiar o imputar.
 
-- 1.3.  Analiza y modifica los tipos de datos de las columnas
+3. **Column Education**
+- Tipo de dato: Categórico (Texto).
+- Representa: Nivel académico del cliente (5 tipos).
+
+4. **Column Marital_Status**
+- Tipo de dato: Categórico (Texto).
+- Representa: Estado civil del cliente (6 tipos).
+Sugerencia: Si hay categorías similares, podrían unirse (por ejemplo, "Together" y "Married").
+ Considerar cómo afecta al análisis separar viudos, divorciados, etc.
+
+5. **Column Income**
+- Tipo de dato: Numérico (Continuo).
+- Representa: Ingreso económico anual del cliente.
+- Comentarios: Existen valores nulos y atípicos (outliers). 
+
+6. **Column Kidhome**
 
 ### Actividad 2: Limpieza de datos
 - Busca errores en los datos: valores atípicos, datos en blanco o errores de escritura, verifica por ejemplo que las fechas son coherentes y no hay clientes con más de cien años.
 
-**2.1. Columna Year_Birth**
+**2.1. Column Year_Birth**
 Los valores se distribuyen entre 1976 y 1993, por lo que aparentemente parecen correctos. 
+
+**2.2. Column Income**
+Existen 13 valores nulos y la desviación estándar es de 21876,85. Puesto que la columna tiene un rango amplio, 
+alta dispersión y posibles outliers, la mediana es probablemente la mejor opción para los valores nulos. 
+Es menos sensible a los valores extremos y podría ser mejor representación.
 
 ### Actividad 3: Transformación de datos
 - Renombra las columnas y organízalas de la mejor manera posible. Proporciona la razón por la que realizaste los cambios en estas columnas para el análisis de datos.

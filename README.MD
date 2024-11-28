@@ -75,6 +75,10 @@ Análisis por columnas:
 - Representa: fecha de alta del cliente.
 - Comentarios: representa un periodo de casi dos años.
 
+9. **Column Recency**
+- Tipo de dato: numérico (Entero).
+- Representa: días desde la última compra del cliente.
+- Comentarios: posible agrupación en rangos de días para detectar clientes recientes vs. inactivos.
 
 ### Actividad 2: Limpieza de datos
 - Busca errores en los datos: valores atípicos, datos en blanco o errores de escritura, verifica por ejemplo que las fechas son coherentes y no hay clientes con más de cien años.

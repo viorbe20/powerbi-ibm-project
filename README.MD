@@ -66,6 +66,12 @@ Sugerencia: Si hay categorías similares, podrían unirse (por ejemplo, "Togethe
 - Comentarios: Existen valores nulos y atípicos (outliers). 
 
 6. **Column Kidhome**
+- Tipo de dato: Numérico (Entero).
+- Representa: Número de niños en el hogar.
+
+7. **Column Teenhome**
+- Tipo de dato: Numérico (Entero).
+- Representa: Número de niños en el hogar.
 
 ### Actividad 2: Limpieza de datos
 - Busca errores en los datos: valores atípicos, datos en blanco o errores de escritura, verifica por ejemplo que las fechas son coherentes y no hay clientes con más de cien años.
@@ -77,6 +83,23 @@ Los valores se distribuyen entre 1976 y 1993, por lo que aparentemente parecen c
 Existen 13 valores nulos y la desviación estándar es de 21876,85. Puesto que la columna tiene un rango amplio, 
 alta dispersión y posibles outliers, la mediana es probablemente la mejor opción para los valores nulos. 
 Es menos sensible a los valores extremos y podría ser mejor representación.
+
+**2.3. Columns Kidhome - ChildrenHome **
+Estas columnas contiene 0 y 1 en función de si hay niños de esas edades o no en el hogar. 
+Se ha considerado que la franja de edad en una campaña de markerting puede ser importante, 
+por lo que se ha creado una nueva columna llamada Childrenhome con los siguientes valores:
+- None: en caso de que el valor en ambas columnas sea 0 y por tanto no hay menores en el hogar.
+- Todler: en caso de que 0 en Teenhome y 1 en Kidhome, ya que al menos existe menor pero no es adolescente.
+- Teen: en caso de adolescente.
+- Children: en caso de que el valor de ambas columnas sea 1. 
+
+La consulta utilizada ha sido:
+```DAX
+if [Teenhome] = 0 and [Kidhome] = 0 then "None"
+else if [Teenhome] = 0 and [Kidhome] = 1 then "Todler"
+else if [Teenhome] = 1 and [Kidhome] = 0 then "Teen"
+else "Children"
+```
 
 ### Actividad 3: Transformación de datos
 - Renombra las columnas y organízalas de la mejor manera posible. Proporciona la razón por la que realizaste los cambios en estas columnas para el análisis de datos.

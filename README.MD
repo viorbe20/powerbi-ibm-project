@@ -48,7 +48,6 @@ Análisis por columnas:
 2. **Column Year_Birth**
 - Tipo de dato: Numérico (Año).
 - Representa: Año de nacimiento del cliente.
-- Comentarios: Podrías calcular la edad como una nueva columna para facilitar análisis demográficos. Ejemplo: 2024 - Year_Birth. Si hay valores extremos (por ejemplo, años irreales como 1900), se deben limpiar o imputar.
 
 3. **Column Education**
 - Tipo de dato: Categórico (Texto).
@@ -57,8 +56,6 @@ Análisis por columnas:
 4. **Column Marital_Status**
 - Tipo de dato: Categórico (Texto).
 - Representa: Estado civil del cliente (6 tipos).
-Sugerencia: Si hay categorías similares, podrían unirse (por ejemplo, "Together" y "Married").
- Considerar cómo afecta al análisis separar viudos, divorciados, etc.
 
 5. **Column Income**
 - Tipo de dato: Numérico (Continuo).
@@ -71,7 +68,7 @@ Sugerencia: Si hay categorías similares, podrían unirse (por ejemplo, "Togethe
 
 7. **Column Teenhome**
 - Tipo de dato: Numérico (Entero).
-- Representa: Número de niños en el hogar.
+- Representa: Número de adolescentes en el hogar.
 
 ### Actividad 2: Limpieza de datos
 - Busca errores en los datos: valores atípicos, datos en blanco o errores de escritura, verifica por ejemplo que las fechas son coherentes y no hay clientes con más de cien años.
@@ -81,8 +78,7 @@ Los valores se distribuyen entre 1976 y 1993, por lo que aparentemente parecen c
 
 **2.2. Column Income**
 Existen 13 valores nulos y la desviación estándar es de 21876,85. Puesto que la columna tiene un rango amplio, 
-alta dispersión y posibles outliers, la mediana es probablemente la mejor opción para los valores nulos. 
-Es menos sensible a los valores extremos y podría ser mejor representación.
+alta dispersión y posibles outliers, la mediana es probablemente la mejor opción para los valores nulos. Es menos sensible a los valores extremos y podría ser mejor representación.
 
 **2.3. Columns Kidhome - ChildrenHome **
 Estas columnas contiene 0 y 1 en función de si hay niños de esas edades o no en el hogar. 
@@ -115,9 +111,6 @@ A partir de los años de la columna *Year_Birth* se calcula la edad y se guarda 
 ```DAX  
 Date.Year(DateTime.LocalNow()) - [Year_Birth]
 ```
-
-
-
 
 ### Actividad 4: Modelado de datos
 - 4.1. Cree un modelo de datos cuya estructura se base en una única tabla de hechos. La tabla de hechos debe estar en el centro del modelo conectada a las tablas de dimensiones en forma de estrella.

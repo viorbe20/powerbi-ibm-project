@@ -38,6 +38,9 @@ Link de la fuente de datos: [Datos](https://www.kaggle.com/datasets/rodsaldanha/
 
 ![Data transformation](./img/1.2.png)
 
+### Actividad 2: Limpieza de datos
+- Busca errores en los datos: valores atípicos, datos en blanco o errores de escritura, verifica por ejemplo que las fechas son coherentes y no hay clientes con más de cien años.
+
 Análisis por columnas:
 
 1. **Column ID**
@@ -80,17 +83,46 @@ Análisis por columnas:
 - Representa: días desde la última compra del cliente.
 - Comentarios: posible agrupación en rangos de días para detectar clientes recientes vs. inactivos.
 
-### Actividad 2: Limpieza de datos
-- Busca errores en los datos: valores atípicos, datos en blanco o errores de escritura, verifica por ejemplo que las fechas son coherentes y no hay clientes con más de cien años.
+10. **Columns amounts**
+Cantidad gastada en los útlimos dos años según el producto:
+- MntWines: vino.
+- MntFruits: fruta.
+- MntMeatProducts: carne.
+- MntFishProducts: pescado.
+- MntSweetProducts: dulces.
+- MntGoldProds: oro.
 
-**2.1. Column Year_Birth**
+11. **Columns Purchases**
+Columnas que muestran valores relacionados con tendencias de comprar e interacciones del cliente con la empresa.
+- NumDealsPurchases - compras con descuento.
+- NumCatalogPurchases - compras usando catálogo.
+- NumStorePurchases - compra directa en tienda.
+- NumWebPurchases - compras en la web.
+- NumWebVisitsMonth - número de visitas a la web en el último mes.
+
+### Actividad 3: Transformación de datos
+- Renombra las columnas y organízalas de la mejor manera posible. Proporciona la razón por la que realizaste los cambios en estas columnas para el análisis de datos.
+- Analiza y modifica los tipos de datos de las columnas.
+- Lee el archivo csv de datos y conviértelo en un data set valido.
+- Revisar los datos en el transformador de datos de Power Query y analizar el contenido de las columnas.
+- Busca errores o valores atípicos en los datos.
+- Edita las columnas en caso de ser necesario.
+
+**3.1. Column Age**
+A partir de los años de la columna *Year_Birth* se calcula la edad y se guarda en  una nueva columna  *Age*.
+
+```DAX  
+Date.Year(DateTime.LocalNow()) - [Year_Birth]
+```
+
+**3.2. Column Year_Birth**
 Los valores se distribuyen entre 1976 y 1993, por lo que aparentemente parecen correctos. 
 
-**2.2. Column Income**
+**3.3. Column Income**
 Existen 13 valores nulos y la desviación estándar es de 21876,85. Puesto que la columna tiene un rango amplio, 
 alta dispersión y posibles outliers, la mediana es probablemente la mejor opción para los valores nulos. Es menos sensible a los valores extremos y podría ser mejor representación.
 
-**2.3. Columns Kidhome - ChildrenHome **
+**3.4. Columns Kidhome - ChildrenHome**
 Estas columnas contiene 0 y 1 en función de si hay niños de esas edades o no en el hogar. 
 Se ha considerado que la franja de edad en una campaña de markerting puede ser importante, 
 por lo que se ha creado una nueva columna llamada Childrenhome con los siguientes valores:
@@ -106,22 +138,22 @@ else if [Teenhome] = 0 and [Kidhome] = 1 then "Todler"
 else if [Teenhome] = 1 and [Kidhome] = 0 then "Teen"
 else "Children"
 ```
+**3.5. Column MntTotalProducts**
+Se ha creado una columna con el gasto total de producto por cliente, en los dos últimos años unificando las siguientes columnas: 
 
-### Actividad 3: Transformación de datos
-- Renombra las columnas y organízalas de la mejor manera posible. Proporciona la razón por la que realizaste los cambios en estas columnas para el análisis de datos.
-- Analiza y modifica los tipos de datos de las columnas.
-- Lee el archivo csv de datos y conviértelo en un data set valido.
-- Revisar los datos en el transformador de datos de Power Query y analizar el contenido de las columnas.
-- Busca errores o valores atípicos en los datos.
-- Edita las columnas en caso de ser necesario.
+- MntWines: vino.
+- MntFruits: fruta.
+- MntMeatProducts: carne.
+- MntFishProducts: pescado.
+- MntSweetProducts: dulces.
+- MntGoldProds: oro.
 
-**3.1. Creación de nuevas columnas**
-A partir de los años de la columna *Year_Birth* se calcula la edad y se guarda en  una nueva columna  *Age*.
+**3.6. TotalPurchases**
+Total de compras por cliente. 
 
-```DAX  
-Date.Year(DateTime.LocalNow()) - [Year_Birth]
+```DAX
+TotalPurchases = [NumDealsPurchases] + [NumCatalogPurchases] + [NumStorePurchases] + [NumWebPurchases]
 ```
-
 ### Actividad 4: Modelado de datos
 - 4.1. Cree un modelo de datos cuya estructura se base en una única tabla de hechos. La tabla de hechos debe estar en el centro del modelo conectada a las tablas de dimensiones en forma de estrella.
 

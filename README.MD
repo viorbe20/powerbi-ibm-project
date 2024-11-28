@@ -41,34 +41,40 @@ Link de la fuente de datos: [Datos](https://www.kaggle.com/datasets/rodsaldanha/
 Análisis por columnas:
 
 1. **Column ID**
-- Tipo de dato: Numérico (Entero).
-- Representa: Identificador único para cada cliente.
-- Comentarios: No hay duplicados.
+- Tipo de dato: numérico (Entero).
+- Representa: identificador único para cada cliente.
+- Comentarios: ho hay duplicados.
 
 2. **Column Year_Birth**
-- Tipo de dato: Numérico (Año).
-- Representa: Año de nacimiento del cliente.
+- Tipo de dato: numérico (Año).
+- Representa: año de nacimiento del cliente.
 
 3. **Column Education**
-- Tipo de dato: Categórico (Texto).
-- Representa: Nivel académico del cliente (5 tipos).
+- Tipo de dato: categórico (Texto).
+- Representa: nivel académico del cliente (5 tipos).
 
 4. **Column Marital_Status**
-- Tipo de dato: Categórico (Texto).
-- Representa: Estado civil del cliente (6 tipos).
+- Tipo de dato: categórico (Texto).
+- Representa: estado civil del cliente (6 tipos).
 
 5. **Column Income**
-- Tipo de dato: Numérico (Continuo).
-- Representa: Ingreso económico anual del cliente.
-- Comentarios: Existen valores nulos y atípicos (outliers). 
+- Tipo de dato: numérico (Continuo).
+- Representa: ingreso económico anual del cliente.
+- Comentarios: existen valores nulos y atípicos (outliers). 
 
 6. **Column Kidhome**
-- Tipo de dato: Numérico (Entero).
-- Representa: Número de niños en el hogar.
+- Tipo de dato: numérico (Entero).
+- Representa: número de niños en el hogar.
 
 7. **Column Teenhome**
-- Tipo de dato: Numérico (Entero).
-- Representa: Número de adolescentes en el hogar.
+- Tipo de dato: numérico (Entero).
+- Representa: número de adolescentes en el hogar.
+
+8. **Column Dt_Customer**
+- Tipo de dato: fecha.
+- Representa: fecha de alta del cliente.
+- Comentarios: representa un periodo de casi dos años.
+
 
 ### Actividad 2: Limpieza de datos
 - Busca errores en los datos: valores atípicos, datos en blanco o errores de escritura, verifica por ejemplo que las fechas son coherentes y no hay clientes con más de cien años.

@@ -100,6 +100,9 @@ Columnas que muestran valores relacionados con tendencias de comprar e interacci
 - NumWebPurchases - compras en la web.
 - NumWebVisitsMonth - número de visitas a la web en el último mes.
 
+12. **Columns Accepted**
+Diferentes columnas en función de la campaña. Valores 0 y 1 según si el cliente aceptó l aoferta o no de dicha campaña.
+
 ### Actividad 3: Transformación de datos
 - Renombra las columnas y organízalas de la mejor manera posible. Proporciona la razón por la que realizaste los cambios en estas columnas para el análisis de datos.
 - Analiza y modifica los tipos de datos de las columnas.
